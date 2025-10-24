@@ -40,41 +40,34 @@ export default function HeroSection() {
         </div>
         <section>
           <div className='relative pt-24 md:pt-36'>
-            <AnimatedGroup
-              variants={{
-                container: {
-                  visible: {
-                    transition: {
-                      delayChildren: 1,
-                    },
-                  },
-                },
-                item: {
-                  hidden: {
-                    opacity: 0,
-                    y: 20,
-                  },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                      type: "spring",
-                      bounce: 0.3,
-                      duration: 2,
-                    },
-                  },
-                },
-              }}
-              className='mask-b-from-35% mask-b-to-90% absolute inset-0 top-56 -z-30 lg:top-32'
-            >
-              <Image
-                src='/universe_generative_pattern.png'
-                alt='background'
-                className='hidden size-full dark:block'
-                width='3276'
-                height='4095'
+            {/* Subtle grid pattern background */}
+            <div className='absolute inset-0 top-56 z-0 lg:top-32'>
+              {/* Light mode grid */}
+              <div
+                className='absolute inset-0 size-full opacity-[0.05] dark:hidden'
+                style={{
+                  backgroundImage: `
+                    linear-gradient(rgba(0, 0, 0, 0.5) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 0, 0, 0.5) 1px, transparent 1px)
+                  `,
+                  backgroundSize: "20px 20px",
+                }}
               />
-            </AnimatedGroup>
+
+              {/* Dark mode grid */}
+              <div
+                className='absolute inset-0 size-full opacity-[0.08] hidden dark:block'
+                style={{
+                  backgroundImage: `
+                    linear-gradient(rgba(255, 255, 255, 0.5) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.5) 1px, transparent 1px)
+                  `,
+                  backgroundSize: "20px 20px",
+                }}
+              />
+            </div>
+
+            <div className='absolute inset-0 z-0 size-full [background:radial-gradient(100%_100%_at_50%_50%,transparent_0%,var(--color-background)_65%)]' />
 
             <div
               aria-hidden
